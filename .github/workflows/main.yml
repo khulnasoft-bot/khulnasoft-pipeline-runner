@@ -1,0 +1,16 @@
+name: run khulnasoft pipeline
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: 'run pipeline'
+        uses: ./
+        env:
+          PIPELINE_NAME: 'khulnasoft-pipeline'
+          TRIGGER_NAME: 'khulnasoft-trigger'
+          ORG_REO_TOKEN: ${{ secrets.ORG_REO_TOKEN }}
+        id: run-pipeline
